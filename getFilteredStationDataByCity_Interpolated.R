@@ -4,7 +4,6 @@ getFilteredStationsDataByCity_Interpolated <- function(city.list, station.list, 
   weatherDFs <- dlStationData(kns, begin, end)
   combined.list <- combineWeatherDFs(weatherDFs)
   filteredData <- filterStationData(combined.list, distance, hourly_interval, tolerance, begin, end)
-  interpolation <- interpolateData(filteredData[[4]])
+  interpolation <- interpolateData(filteredData$station_data)
   return(interpolation) 
 }
-

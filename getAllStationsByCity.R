@@ -8,4 +8,3 @@ getAllStationsDataByCity <- function(city.list, station.list, k, begin, end)
   # 2) A list of combined station data
   return(combined.list) 
 }
-

@@ -6,4 +6,3 @@ getFilteredStationsDataByCity <- function(city.list, station.list, k, begin, end
   filteredData <- filterStationData(combined.list, distance, hourly_interval, tolerance, begin, end)
   return(filteredData) 
 }
-

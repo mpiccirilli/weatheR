@@ -72,6 +72,7 @@ kNStations <- function(city.list, station.list, k)
   # st <- st[st$BEGIN_Date <= beg & st$END_Date >= end, ] # remove stations without complete data
   return(st)
 }
+ks <- kNStations(cities.of.interest, stations, 5)
 ########## K Nearest Weather Stations ##########
 
 
@@ -156,9 +157,9 @@ dlStationData <- function(kns, beg, end)
     df.list <- append(df.list, temp.list)
   }
   output.list <- list(status, df.list)
+  names(output.list) <- c("dl_status", "station_data")
   return(output.list)
 }
-weatherDFs <- dlStationData(kns)
 ########## Download Station Data ##########
 
 
@@ -167,27 +168,28 @@ weatherDFs <- dlStationData(kns)
 combineWeatherDFs <- function(dfList)
 {
   combined.list <- list()
-  keys <- unique(names(dfList[[2]]))
+  keys <- unique(names(dfList$station_data))
   keys <- keys[keys!=""]
   nkeys <- length(keys)
   for (i in 1:nkeys)
   {
-    track <- which(names(dfList[[2]])==keys[i])
-    combined.list[[i]] <- as.data.frame(rbindlist(dfList[[2]][track]))
+    track <- which(names(dfList$station_data)==keys[i])
+    combined.list[[i]] <- as.data.frame(rbindlist(dfList$station_data[track]))
     names(combined.list)[i] <- keys[i]
   }
-  output.list <- list(dfList[[1]], combined.list)
+  output.list <- list(dfList$dl_status, combined.list)
+  names(output.list) <- c("dl_status", "station_data")
   return(output.list)
 }
-combined.list <- combineWeatherDFs(weatherDFs)
+########## Combine List of DataFrames ##########
 
 
 ########## Filter Station Data ##########
-filterStationData <- function(comb.list, distance, hourly_interval, tolerance)
+filterStationData <- function(comb.list, distance, hourly_interval, tolerance, begin, end)
 {
   
-  dlStatus <- comb.list[[1]]
-  comb.list <- comb.list[[2]]
+  dlStatus <- comb.list$dl_status
+  comb.list <- comb.list$station_data
   
   city.names <- unlist(lapply(comb.list, function(x) unique(x$city)))
   
@@ -223,14 +225,14 @@ filterStationData <- function(comb.list, distance, hourly_interval, tolerance)
   }
   ix.ct$temp_pct <- ix.ct[,cl[1]]/unlist(lapply(comb.list,nrow))
   ix.ct$dew_pct <- ix.ct[,cl[2]]/unlist(lapply(comb.list,nrow))
-  print(ix.ct)
+  # print(ix.ct)
   
   # ms.obs <- (ix.ct$TEMP)+(ix.ct$DEW.POINT)
   
   # 3.b) set a minimum number of observations and remove stations that do not
   # meet requirement
-  yrs <- seq(beg,end,1)
-  nyrs <- end-beg+1
+  yrs <- seq(begin,end,1)
+  nyrs <- end-begin+1
   min.obs <- (24/hourly_interval)*365*nyrs*(1-tolerance)
   obs.ix <- which(sapply(comb.list, nrow) < min.obs)
   rm.obs <- names(comb.list[which(sapply(comb.list, nrow) < min.obs)])
@@ -263,14 +265,13 @@ filterStationData <- function(comb.list, distance, hourly_interval, tolerance)
   
   # Create a list for output
   finalOutput <- list(dlStatus, filterStatus, finalStations, final.list)
-  
+  names(finalOutput) <- c("dl_status", "removed_rows", "station_names_final", "station_data")
   return(finalOutput)
 }
 ########## Combine List of DataFrames ##########
 
 
 ########## Interpolate Weather Data 
-
 interpolateData <- function(wx.list)
 {
   clean.list <- lapply(wx.list, function(x){
@@ -336,3 +337,4 @@ interpolateData <- function(wx.list)
   #  }
   #}
 }
+########## Interpolate Weather Data 
