@@ -267,3 +267,72 @@ filterStationData <- function(comb.list, distance, hourly_interval, tolerance)
   return(finalOutput)
 }
 ########## Combine List of DataFrames ##########
+
+
+########## Interpolate Weather Data 
+
+interpolateData <- function(wx.list)
+{
+  clean.list <- lapply(wx.list, function(x){
+    ddply(x, .(city, USAFID, distance, rank, YR, M, D, HR), summarise,
+          LAT=mean(LAT), LONG=mean(LONG), ELEV=mean(ELEV),
+          TEMP=mean(TEMP), DEW.POINT=mean(DEW.POINT))})
+  
+  # Create a column with the full posix date for each hour
+  for (i in 1:length(clean.list))
+  {
+    clean.list[[i]]$dates <- as.POSIXct(paste(paste(clean.list[[i]]$YR,"-",clean.list[[i]]$M,
+                                                    "-",clean.list[[i]]$D, " ",clean.list[[i]]$HR,sep=""),
+                                              ":",0,":",0,sep=""),"%Y-%m-%d %H:%M:%S", tz="UTC")}
+  
+  # Create a list of dataframes of each hour 
+  hourly.list <- list()
+  for (i in 1:length(clean.list))
+  {
+    hourly.list[[i]] <- data.frame(hours=seq(
+      from=as.POSIXct(paste(min(clean.list[[i]]$YR),"-1-1 0:00", sep=""), tz="UTC"),
+      to=as.POSIXct(paste(max(clean.list[[i]]$YR),"-12-31 23:00", sep=""), tz="UTC"),
+      by="hour"))
+  }
+  
+  wx.df <- data.frame()
+  for (i in 1:length(clean.list))
+  {
+    temp.df <- merge(hourly.list[[i]], clean.list[[i]], by.x="hours", by.y="dates", all.x=TRUE)
+    temp.df$city <- unique(na.omit(temp.df$city))[1]
+    temp.df$USAFID <- unique(na.omit(temp.df$USAFID))[1]
+    temp.df$distance <- unique(na.omit(temp.df$distance))[1]
+    temp.df$rank <- unique(na.omit(temp.df$rank))[1]
+    temp.df$LAT <- unique(na.omit(temp.df$LAT))[1]
+    temp.df$LONG <- unique(na.omit(temp.df$LONG))[1]
+    temp.df$ELEV <- unique(na.omit(temp.df$ELEV))[1]
+    temp.df$YR <- as.numeric(format(temp.df$hours,"%Y"))
+    temp.df$M <- as.numeric(format(temp.df$hours,"%m"))
+    temp.df$D <- as.numeric(format(temp.df$hours,"%d"))
+    temp.df$HR <- as.numeric(format(temp.df$hours,"%H"))
+    
+    # Interpolation
+    temp.int <- approx(x=temp.df$hours, y=temp.df$TEMP, xout=temp.df$hours)
+    temp.df$TEMP <- temp.int$y
+    dew.int <- approx(x = temp.df$hours, y = temp.df$DEW.POINT, xout = temp.df$hours)
+    temp.df$DEW.POINT <- dew.int$y  
+    
+    # Merge the dataframes together
+    wx.df <- rbind(wx.df, temp.df)
+  }
+  return(wx.df)
+  
+  #columns <- c("TEMP", "DEW.POINT")
+  #index <- NULL
+  #index.count <- as.data.frame(matrix(nrow=length(wx.list), ncol=length(columns)))
+  #colnames(index.count) <- columns
+  #for (i in length(columns):1)
+  #{
+  #  index <- which(wx.df[,columns[i]] %in% NA)
+  #  index.count[1,i] <- length(index)
+  #  for (j in length(index):1)
+  #  {
+  #    wx.df[,columns[i]][index][j] <- wx.df[,columns[i]][index+1][j]
+  #  }
+  #}
+}
