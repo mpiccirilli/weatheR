@@ -1,8 +1,6 @@
 plotStations <- function(city.list, station.list, k)
 {
-  # city.list <- cities.of.interest[1:2]
-  # station.list <- stations
-  # k <- 5
+  
   kns <- kNStations(city.list, station.list, k)
   nc <- length(city.list)
   plots <- list()
