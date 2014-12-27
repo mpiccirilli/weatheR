@@ -20,5 +20,3 @@ plotStations <- function(city.list, station.list, k)
   }
   if (nc == 1) plot(p1) else multiplot(plotlist = plots, cols = round(sqrt(nc)))
 }
-
-plotStations(cities.of.interest, stations, 5)
