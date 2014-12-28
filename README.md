@@ -40,7 +40,7 @@ plotStations(cities, station.list)
 
 Now let's download the station data.  
 
-The following example uses the function that will filter though the k-nearest weather stations, selecting the best one based on the number of missing observations and proximity to each city's reference point. It will then average the hourly observations, and interpolate any missing values. 
+The following example uses the function that will filter though the k-nearest weather stations, selecting the best one based on the number of missing observations and proximity to each city's reference point (black dots in plot above). It will then average the hourly observations and interpolate any missing values. 
 
 ```{r, eval=FALSE}
 hourly.data <- getInterpolatedDataByCity(cities, station.list, 5, 2010, 2013, 100, 3, .05)
