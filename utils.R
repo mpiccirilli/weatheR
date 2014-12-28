@@ -72,7 +72,6 @@ kNStations <- function(city.list, station.list, k)
   # st <- st[st$BEGIN_Date <= beg & st$END_Date >= end, ] # remove stations without complete data
   return(st)
 }
-ks <- kNStations(cities.of.interest, stations, 5)
 ########## K Nearest Weather Stations ##########
 
 
@@ -89,7 +88,6 @@ col.names <- c("CHARS", "USAFID", "WBAN", "YR", "M", "D", "HR", "MIN",
                "TEMP", "TEMP.QLTY", "DEW.POINT", "DEW.POINT.QLTY", 
                "ATM.PRES", "ATM.PRES.QLTY")
 ########## Fixed Column Widths & Names ##########
-
 
 
 
