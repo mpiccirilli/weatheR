@@ -6,7 +6,7 @@ Maintainer: Michael Piccirilli <mrp2181@columbia.edu>
 Description: A preliminary package to set up to be used to accompany research being conducted
     in the Sustainable Engineering lab at The Earth Institute at Columbia University.
 Depends: R (>= 3.1.2)
-Imports:
+Import:
     httr,
     ggmap,
     FNN,
