@@ -11,12 +11,14 @@ Depends: R (>= 3.1.2),
     FNN,
     McSpatial,
     data.table,
-    plyr
+    plyr,
+    gridExtra
 Imports:
     httr,
     ggmap,
     FNN,
     McSpatial,
     data.table,
-    plyr
+    plyr,
+    gridExtra
 License: MIT
