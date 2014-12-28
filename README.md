@@ -62,3 +62,5 @@ plotDailyMax(hourly.data)
 ```
 
 ![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/dailyMax.png)
+
+We can see that the Nairobi weather station is clearly missing data for 6 months of both 2010 and and 2011.  The straight line is due to the linear interpolation performed in the prior step. 
