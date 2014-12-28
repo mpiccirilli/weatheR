@@ -21,7 +21,7 @@ require(weatheR)
 
 First let's call in the full list of NOAA ISD weather stations.
 ```{r}
-data(stations)
+data(stations) # dataset is called 'station.list'
 ```
 
 Now we can create a vector of cities we would like to download weather data.
