@@ -53,6 +53,6 @@ In addition to the list of stations and cities, we have also included several ot
 - end date (required; 4-digit year)
 - max distance in kilometers away from a location to consider (optional; default=100) 
 - minimum hourly interval of observations. ex, 1 = hourly, 3 = every three hours, etc.. (optional; default=3)
-- tolerance, which max percent of missing data we will allow (optional; default=.05)
+- tolerance, which ismax percent of missing data we will allow (optional; default=.05)
 
 
