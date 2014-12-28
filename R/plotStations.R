@@ -26,7 +26,8 @@ plotStations <- function(city.list, station.list, k)
                                        data = kns[kns$city==city.list[i],]) +
                              geom_point(aes(x = lon, y = lat),
                                         data = geocode(city.list[i]),
-                                        colour="black", size=7, alpha=.5))
+                                        colour="black", size=7, alpha=.5)) +
+                             labs(title=city.list[i]) + theme(plot.margin=unit(c(0,0,0,0),"mm"))
     plots[[i]] <- p1
   }
   if (nc == 1) plot(p1) else multiplot(plotlist = plots, cols = round(sqrt(nc)))
