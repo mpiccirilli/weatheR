@@ -44,6 +44,7 @@ Before we download the data, we can inspect the cities to make sure there are in
 ```{r, message=FALSE, warning=FALSE}
 plotStations(cities, station.list)
 ```
+![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/cityPlot.png)
 
 Now let's download the station data.  The following example uses the function that will filter though the k-nearest weather stations, selecting the best one based on the number of missing observations and proximity to each city's reference point. It will then average the hourly observations, and interpolate any missing values. 
 
