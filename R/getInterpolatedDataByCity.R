@@ -29,6 +29,11 @@
 
 getInterpolatedDataByCity <- function(city.list, station.list, k, begin, end, distance, hourly_interval, tolerance)
 {
+  if(is.null(k)) k <- 5   # Defaults to 5 stations
+  if(is.null(distance)) distance <- 100   # Default: stations to be w/in 100 Kilometers
+  if(is.null(hourly_interval)) hourly_interval <- 3   # Default min observations set to every 3 hours
+  if(is.null(tolerance)) tolerance <- .05  # Default tolerance set to allow 5% missing values
+
   kns <- kNStations(city.list, station.list, k)
   weatherDFs <- dlStationData(kns, begin, end)
   combined.list <- combineWeatherDFs(weatherDFs)

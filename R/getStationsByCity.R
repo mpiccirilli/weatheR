@@ -16,6 +16,8 @@
 
 getStationsByCity <- function(city.list, station.list, k, begin, end)
 {
+  if(is.null(k)) k <- 5   # Defaults to 5 stations
+
   kns <- kNStations(city.list, station.list, k)
   weatherDFs <- dlStationData(kns, begin, end)
   combined.list <- combineWeatherDFs(weatherDFs)

@@ -6,7 +6,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL)
 {
   # Make a list from the ... arguments and plotlist
   plots <- c(list(...), plotlist)
-  numPlots = length(plots)
+  numPlots <- length(plots)
   # If layout is NULL, then use 'cols' to determine layout
   if (is.null(layout))
   {

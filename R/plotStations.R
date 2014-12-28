@@ -10,8 +10,10 @@
 #' @export
 
 
-plotStations <- function(city.list, station.list, k)
+plotStations <- function(city.list, station.list, k = NULL)
 {
+  if(is.null(k)) k <- 5
+
   kns <- kNStations(city.list, station.list, k)
   nc <- length(city.list)
   plots <- list()
