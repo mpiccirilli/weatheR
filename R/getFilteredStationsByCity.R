@@ -25,7 +25,7 @@
 #' @export
 
 
-getFilteredStationsByCity <- function(city.list, station.list, k, begin, end, distance, hourly_interval, tolerance)
+getFilteredStationsByCity <- function(city.list, station.list, k=NULL, begin, end, distance=NULL, hourly_interval=NULL, tolerance=NUL)
 {
   if(is.null(k)) k <- 5   # Defaults to 5 stations
   if(is.null(distance)) distance <- 100   # Default: stations to be w/in 100 Kilometers

@@ -14,7 +14,7 @@
 #' @export
 
 
-getStationsByCity <- function(city.list, station.list, k, begin, end)
+getStationsByCity <- function(city.list, station.list, k = NULL, begin, end)
 {
   if(is.null(k)) k <- 5   # Defaults to 5 stations
 
