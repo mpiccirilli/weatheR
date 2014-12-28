@@ -32,9 +32,11 @@ cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coa
 
 Before we download the data, we can inspect the cities to make sure there are in fact stations close to each city. If some of the stations are too far outside the area of the plot, you might receive a warning message indicating that some points have been excluded.  As you can see, this occurs below.
 
+The following function plots the k-nearest weather stations to a city's reference point.  The black dots are the reference points, and the red dots are the stations, ordered from 1 to *k* by closeness. I have included *k* in the function, however it is an optional parameter that will default to 5. 
+
 
 ```{r, message=FALSE, warning=FALSE}
-plotStations(cities, station.list)
+plotStations(cities, station.list, 5)
 ```
 ![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/cityPlot.png)
 
