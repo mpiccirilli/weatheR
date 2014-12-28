@@ -10,15 +10,7 @@ For example, you may want to:
 - Select a station with the best data to a given location and interpolate missing observations
 
 Examples
-====== 
-
-
-
-```{r global_options, include=FALSE}
-library(knitr)
-opts_chunk$set(cache=TRUE, tidy=TRUE, tidy.opts=list(width.cutoff=60))
-```
-
+----- 
 
 ```{r}
 require(devtools)
@@ -46,7 +38,9 @@ plotStations(cities, station.list)
 ```
 ![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/cityPlot.png)
 
-Now let's download the station data.  The following example uses the function that will filter though the k-nearest weather stations, selecting the best one based on the number of missing observations and proximity to each city's reference point. It will then average the hourly observations, and interpolate any missing values. 
+Now let's download the station data.  
+
+The following example uses the function that will filter though the k-nearest weather stations, selecting the best one based on the number of missing observations and proximity to each city's reference point. It will then average the hourly observations, and interpolate any missing values. 
 
 ```{r, eval=FALSE}
 hourly.data <- getInterpolatedDataByCity(cities, station.list, 5, 2010, 2013, 100, 3, .05)
