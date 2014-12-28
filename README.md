@@ -55,4 +55,10 @@ In addition to the list of stations and cities, we have also included several ot
 - minimum hourly interval of observations. ex, 1 = hourly, 3 = every three hours, etc.. (optional; default=3)
 - tolerance, which ismax percent of missing data we will allow (optional; default=.05)
 
+Now that we have hourly observations for these 4 cities, perhaps we would like to plot the maximum daily temperature for each. 
 
+```{r}
+plotDailyMax(hourly.data)
+```
+
+![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/dailyMax.png)
