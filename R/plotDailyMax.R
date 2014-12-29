@@ -1,12 +1,11 @@
 #' Plot Daily Max Temp for Multiple Cities
 #'
-#' This function will plot the daily max temperature of one or multiple cities
-#' over time.
 #'
 #' This function requires that the dataframe fed into the funciton have columns named 'TEMP' for temperature,
 #' 'city' for the city or identifier, 'YR' for the year, 'M' for month, and 'D' for the day.
 #'
 #' @param hourlyDF Must be a dataframe with columns for TEMP, city, YR, M, and D
+#' @return Plots the daily max temperateu of one or multiple cities
 #' @export
 
 plotDailyMax <- function(hourlyDF)

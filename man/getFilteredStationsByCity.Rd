@@ -4,8 +4,8 @@
 \alias{getFilteredStationsByCity}
 \title{Get k-nearest station data, Filtered}
 \usage{
-getFilteredStationsByCity(city.list, station.list, k, begin, end, distance,
-  hourly_interval, tolerance)
+getFilteredStationsByCity(city.list, station.list, k = NULL, begin, end,
+  distance = NULL, hourly_interval = NULL, tolerance = NUL)
 }
 \arguments{
 \item{city.list}{City of list of Cities. The format should be as follows: "City, State", or "City, Country"}

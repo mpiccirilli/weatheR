@@ -4,8 +4,8 @@
 \alias{getInterpolatedDataByCity}
 \title{Get k-nearest station data, Filtered, Interpolated}
 \usage{
-getInterpolatedDataByCity(city.list, station.list, k, begin, end, distance,
-  hourly_interval, tolerance)
+getInterpolatedDataByCity(city.list, station.list, k = NULL, begin, end,
+  distance = NULL, hourly_interval = NULL, tolerance = NULL)
 }
 \arguments{
 \item{city.list}{City of list of Cities. The format should be as follows: "City, State", or "City, Country"}

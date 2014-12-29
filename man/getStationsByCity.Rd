@@ -4,7 +4,7 @@
 \alias{getStationsByCity}
 \title{Get k-nearest station data}
 \usage{
-getStationsByCity(city.list, station.list, k, begin, end)
+getStationsByCity(city.list, station.list, k = NULL, begin, end)
 }
 \arguments{
 \item{city.list}{City of list of Cities. The format should be as follows: "City, State", or "City, Country"}
