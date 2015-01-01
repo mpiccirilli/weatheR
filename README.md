@@ -38,7 +38,7 @@ The following function plots the k-nearest weather stations to a city's referenc
 ```{r, message=FALSE, warning=FALSE}
 plotStations(cities, station.list, 5)
 ```
-![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/cityPlot.png)
+![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/images/cityPlot.png)
 
 Now let's download the station data.  
 
@@ -63,6 +63,6 @@ Now that we have hourly observations for these 4 cities, perhaps we would like t
 plotDailyMax(hourly.data)
 ```
 
-![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/dailyMax.png)
+![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/images/dailyMax.png)
 
 We can see that the Nairobi weather station is clearly missing data for 6 months of both 2010 and and 2011.  The straight line is due to the linear interpolation performed in the prior step. 
