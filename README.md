@@ -54,7 +54,18 @@ plotStations(cities, station.list, 5)
 ![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/images/cityPlot.png)
 
 
-Now let's download the station data.  
+Now let's download the station data.  <p>
+
+In addition to the list of stations and cities, we have also included several other parameters to help us select the best station between a given date range.  The parameters include: <p>
+
+- k-nearst stations we would like to select (optional; default=5)
+- beginning date (required; 4-digit year)
+- end date (required; 4-digit year)
+- max distance in kilometers away from a location to consider (optional; default=100) 
+- minimum hourly interval of observations. ex, 1 = hourly, 3 = every three hours, etc.. (optional; default=3)
+- tolerance, which ismax percent of missing data we will allow (optional; default=.05)
+<p>
+As you will see in the examples below, I do include the optional parameters except in `getInterpolatedDataByCity`.
 
 
 getStationsByCity
@@ -149,22 +160,23 @@ length(stations$station_data)
 
 ```
 
+getInterpolatedDataByCity
+------
+This function uses the same filtering procedure as `getFilteredStationsByCity` stations, selecting the best station for each city based on the number of missing observations and proximity to each city's reference point. It will then average the hourly observations and interpolate any missing values.
 
-The following example uses the function that will filter though the k-nearest weather stations, selecting the best one based on the number of missing observations and proximity to each city's reference point (black dots in plot above). It will then average the hourly observations and interpolate any missing values. 
+The output is one large dataframe with hourly observations for each city.
 
 ```{r, eval=FALSE}
 hourly.data <- getInterpolatedDataByCity(cities, station.list, 5, 2010, 2013, 100, 3, .05)
+
+dim(hourly.data)
+
 ```
 
-In addition to the list of stations and cities, we have also included several other parameters to help us select the best station between a given date range.  The parameters include: 
 
-- k-nearst stations we would like to select (optional; default=5)
-- beginning date (required; 4-digit year)
-- end date (required; 4-digit year)
-- max distance in kilometers away from a location to consider (optional; default=100) 
-- minimum hourly interval of observations. ex, 1 = hourly, 3 = every three hours, etc.. (optional; default=3)
-- tolerance, which ismax percent of missing data we will allow (optional; default=.05)
 
+plotDailyMax
+------
 Now that we have hourly observations for these 4 cities, perhaps we would like to plot the maximum daily temperature for each. 
 
 ```{r}
