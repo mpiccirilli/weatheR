@@ -59,7 +59,9 @@ Now let's download the station data.
 
 getStationsByCity
 -----
-This function will download the k-nearest stations to a given city.  These function downlaod each year of data for the k-nearest stations (default = 5) for each city, so these functions will take some time to run.
+This function will downlaod each year of data for the k-nearest stations (default = 5) for each city, so it will take some time to run.  The output of the function is a list of two:
+1) dl_status:  This is the status of attempting to download each year of each station.
+2) station_data: This is a list of dataframes with the station data
 
 ```{r}
 stations <- getStationsByCity(cities, station.list, begin = 2012, end = 2013)
@@ -108,9 +110,44 @@ stations$dl_status
 20 654600-99999-2012.gz Success          Tema, Ghana    5     49.882386
 40 654600-99999-2013.gz Success          Tema, Ghana    5     49.882386
 
-
+class(stations$station_data)
+[1] "list"
+length(stations$station_data)
+[1] 15
 ```
 
+getFilteredStationsByCity
+-------
+This function is similar to `getStationsByCity` except this goes one more step and applies some filters to each of the stations so that we can select the 'best' station for each city.  So this will return only 1 station per city, instead of the k-nearest available stations. 
+
+The output of the function is a list of four:
+1) dl_status:  This is the status of attempting to download each year of each station.
+2) removed_rows: This shows the number of stations found, removed, and kept through the filtering process. The name comes from the filtering techniques used, which are based on the number of missing observations
+3) station_names_final: the names of each dataframe in `station_data`. The format is: "city_USAFID"
+4) station_data: This is a list of dataframes with the station data
+
+```{r}
+stations <- getFilteredStationsByCity(cities, station.list, begin = 2012, end = 2013)
+
+stations$dl_status  #same results as above
+
+stations$removed_rows
+     city stations removed kept
+1 Abidjan        5       3    2
+2   Accra        3       2    1
+3 Nairobi        4       1    3
+4    Tema        3       2    1
+
+stations$station_names_final
+[1] "Abidjan_655780" "Accra_654720"   "Nairobi_637420" "Tema_654720" 
+
+
+class(stations$station_data)
+[1] "list"
+length(stations$station_data)
+[1] 4
+
+```
 
 
 The following example uses the function that will filter though the k-nearest weather stations, selecting the best one based on the number of missing observations and proximity to each city's reference point (black dots in plot above). It will then average the hourly observations and interpolate any missing values. 
