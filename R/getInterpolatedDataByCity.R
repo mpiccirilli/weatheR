@@ -17,7 +17,7 @@
 #' @param end End year (4 digits)
 #' @param distance Maximum distance allowable from each city's reference point
 #' @param hourly_interval Minimum hourly interval allowable (1=hourly; 3 = every 3 hours; 6 = every 6 hours, etc..)
-#' @param tolerance This is the percent, in decimals, of missing data you will allow. (.05 = 5% of total data)
+#' @param tolerance This is the percent, in decimals, of missing data you will allow. (.05 = 5\% of total data)
 #' @return Returns a single dataframe with hourly observations (including interpolated) of every city.
 #' @examples
 #' \dontrun{

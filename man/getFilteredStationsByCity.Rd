@@ -22,7 +22,7 @@ getFilteredStationsByCity(city.list, station.list, k = NULL, begin, end,
 
 \item{hourly_interval}{Minimum hourly interval allowable (1=hourly; 3 = every 3 hours; 6 = every 6 hours, etc..)}
 
-\item{tolerance}{This is the percent, in decimals, of missing data you will allow. (.05 = 5% of total data)}
+\item{tolerance}{This is the percent, in decimals, of missing data you will allow. (.05 = 5\% of total data)}
 }
 \value{
 Returns a list of four items.
