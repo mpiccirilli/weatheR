@@ -157,7 +157,6 @@ class(stations$station_data)
 [1] "list"
 length(stations$station_data)
 [1] 4
-
 ```
 
 getInterpolatedDataByCity
@@ -170,10 +169,8 @@ The output is one large dataframe with hourly observations for each city.
 hourly.data <- getInterpolatedDataByCity(cities, station.list, 5, 2010, 2013, 100, 3, .05)
 
 dim(hourly.data)
-
+[1] 140256     14
 ```
-
-
 
 plotDailyMax
 ------
