@@ -15,7 +15,8 @@ is included in the package under the name 'station.list'.
 }
 \examples{
 \dontrun{
-list.of.stations <- allStations()
+
+station.list <- allStations()
 }
 }
 

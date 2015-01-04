@@ -43,4 +43,15 @@ so this function performs the following two steps:
 1) Average over all data points in original dataset to find average hourly observations
 2) Linearly interpolate hourly data points for missing observations
 }
+\examples{
+\dontrun{
+
+data(stations) #called in as 'station.list'
+cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
+
+hourly.data <- getInterpolatedDataByCity(cities, station.list, 5, 2010, 2013, 100, 3, .05)
+dim(hourly.data)
+
+}
+}
 

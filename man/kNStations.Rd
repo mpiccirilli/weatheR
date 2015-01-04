@@ -20,4 +20,12 @@ Returns the k-nearest weather stations in the full ISD station.list
 Using either an individual city or a list of cities, this will find a reference point for each location
 and return the k-nearest weather stations to that reference point.
 }
+\examples{
+\dontrun{
+
+data(stations) #called in as 'station.list'
+cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
+k.n.stations <- kNStations(cities, station.list, 5)
+}
+}
 

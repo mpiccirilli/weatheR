@@ -16,4 +16,17 @@ Plots the daily max temperateu of one or multiple cities
 This function requires that the dataframe fed into the funciton have columns named 'TEMP' for temperature,
 'city' for the city or identifier, 'YR' for the year, 'M' for month, and 'D' for the day.
 }
+\examples{
+\dontrun{
+
+
+#' data(stations) #called in as 'station.list'
+cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
+hourly.data <- getInterpolatedDataByCity(cities, station.list, 5, 2010, 2013, 100, 3, .05)
+
+# As of right now, this can only plot data from the getInterpolatedDataByCity function
+plotDailyMax(hourly.data)
+
+}
+}
 

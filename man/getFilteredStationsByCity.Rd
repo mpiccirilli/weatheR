@@ -42,4 +42,22 @@ four filters:
 3) Remove stations that exceed a threshold of missing data, including NA values
 4) Select closest station remaining for each city, as all remaining stations are deemed adequate
 }
+\examples{
+\dontrun{
+
+data(stations) #called in as 'station.list'
+cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
+get.stations <- getFilteredStationsByCity(cities, station.list, begin = 2012, end = 2013)
+
+get.stations$dl_status
+
+get.stations$removed_rows
+
+get.stations$station_names_final
+
+class(get.stations$station_data)
+
+length(get.stations$station_data)
+}
+}
 

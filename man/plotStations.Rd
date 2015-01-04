@@ -20,4 +20,12 @@ This will produce single, or multple plots for each city
 This function will plot each city's reference point, along with the
 k-nearest stations to that point.
 }
+\examples{
+\dontrun{
+
+data(stations) #called in as 'station.list'
+cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
+plotStations(cities, station.list, 5)
+}
+}
 
