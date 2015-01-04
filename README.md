@@ -23,9 +23,7 @@ List of Weather Stations
 The list of stations will be called in under the name `station.list`.  The alternative is to use the function to call in the data. 
 ```{r}
 data(stations)
-
 # or
-
 station.list <- allStations()
 ```
 
@@ -56,8 +54,64 @@ plotStations(cities, station.list, 5)
 ![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/images/cityPlot.png)
 
 
-
 Now let's download the station data.  
+
+
+getStationsByCity
+-----
+This function will download the k-nearest stations to a given city.  These function downlaod each year of data for the k-nearest stations (default = 5) for each city, so these functions will take some time to run.
+
+```{r}
+stations <- getStationsByCity(cities, station.list, begin = 2012, end = 2013)
+
+stations$dl_status
+
+                   File  Status                 City rank kilo_distance
+1  655780-99999-2012.gz Success Abidjan, Ivory Coast    1     13.396883
+21 655780-99999-2013.gz Success Abidjan, Ivory Coast    1     13.396883
+2  655850-99999-2012.gz Success Abidjan, Ivory Coast    2     81.198627
+22 655850-99999-2013.gz Success Abidjan, Ivory Coast    2     81.198627
+3  655620-99999-2012.gz Success Abidjan, Ivory Coast    3    165.546591
+23 655620-99999-2013.gz Success Abidjan, Ivory Coast    3    165.546591
+4  654650-99999-2012.gz Success Abidjan, Ivory Coast    4    205.531045
+24 654650-99999-2013.gz Success Abidjan, Ivory Coast    4    205.531045
+5  654450-99999-2012.gz Success Abidjan, Ivory Coast    5    212.170762
+25 654450-99999-2013.gz Success Abidjan, Ivory Coast    5    212.170762
+6  654720-99999-2012.gz Success         Accra, Ghana    1      7.121795
+26 654720-99999-2013.gz Success         Accra, Ghana    1      7.121795
+7  654730-99999-2012.gz Success         Accra, Ghana    2     23.349153
+27 654730-99999-2013.gz Success         Accra, Ghana    2     23.349153
+8  654490-99999-2012.gz  Failed         Accra, Ghana    3     40.986341
+28 654490-99999-2013.gz  Failed         Accra, Ghana    3     40.986341
+9  654590-99999-2012.gz Success         Accra, Ghana    4     59.512919
+29 654590-99999-2013.gz Success         Accra, Ghana    4     59.512919
+10 654710-99999-2012.gz  Failed         Accra, Ghana    5     68.850839
+30 654710-99999-2013.gz  Failed         Accra, Ghana    5     68.850839
+11 637420-99999-2012.gz Success       Nairobi, Kenya    1      3.416254
+31 637420-99999-2013.gz Success       Nairobi, Kenya    1      3.416254
+12 637390-99999-2012.gz Success       Nairobi, Kenya    2      4.756458
+32 637390-99999-2013.gz Success       Nairobi, Kenya    2      4.756458
+13 637410-99999-2012.gz Success       Nairobi, Kenya    3      8.044960
+33 637410-99999-2013.gz Success       Nairobi, Kenya    3      8.044960
+14 637403-99999-2012.gz  Failed       Nairobi, Kenya    4      8.044960
+34 637403-99999-2013.gz  Failed       Nairobi, Kenya    4      8.044960
+15 692014-99999-2012.gz Success       Nairobi, Kenya    5     10.601511
+35 692014-99999-2013.gz Success       Nairobi, Kenya    5     10.601511
+16 654730-99999-2012.gz Success          Tema, Ghana    1      5.521650
+36 654730-99999-2013.gz Success          Tema, Ghana    1      5.521650
+17 654720-99999-2012.gz Success          Tema, Ghana    2     19.707146
+37 654720-99999-2013.gz Success          Tema, Ghana    2     19.707146
+18 654490-99999-2012.gz  Failed          Tema, Ghana    3     19.907417
+38 654490-99999-2013.gz  Failed          Tema, Ghana    3     19.907417
+19 654710-99999-2012.gz  Failed          Tema, Ghana    4     48.059678
+39 654710-99999-2013.gz  Failed          Tema, Ghana    4     48.059678
+20 654600-99999-2012.gz Success          Tema, Ghana    5     49.882386
+40 654600-99999-2013.gz Success          Tema, Ghana    5     49.882386
+
+
+```
+
+
 
 The following example uses the function that will filter though the k-nearest weather stations, selecting the best one based on the number of missing observations and proximity to each city's reference point (black dots in plot above). It will then average the hourly observations and interpolate any missing values. 
 
