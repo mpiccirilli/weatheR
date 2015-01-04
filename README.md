@@ -9,7 +9,7 @@ For example, you may want to:
 - Download all k-nearest station data to a given location for a range of years
 - Select a station with the best data to a given location and interpolate missing observations
 
-Examples
+Installing via GitHub
 ----- 
 
 ```{r}
@@ -18,18 +18,33 @@ install_github("mpiccirilli/weatheR")
 require(weatheR)
 ```
 
-
-First let's call in the full list of NOAA ISD weather stations.
+List of Weather Stations
+-----
+The list of stations will be called in under the name `station.list`.  The alternative is to use the function to call in the data. 
 ```{r}
-data(stations) # dataset is called 'station.list'
+data(stations)
+
+# or
+
+station.list <- allStations()
 ```
 
-Now we can create a vector of cities we would like to download weather data.
+Now we can create a vector of cities we would like to download weather data.  In order to search for stations by city, we need to use the following format: "city, country" or "city, state". 
 
 ```{r}
 cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
 ```
 
+kNStations
+-----
+This function will find the k-nearest weather stations to a given city.  It is used all the functions to find stations. 
+```{r}
+k.n.stations <- kNStations(cities, station.list, 5)
+```
+
+
+plotStations
+-----
 Before we download the data, we can inspect the cities to make sure there are in fact stations close to each city. If some of the stations are too far outside the area of the plot, you might receive a warning message indicating that some points have been excluded.  As you can see, this occurs below.
 
 The following function plots the k-nearest weather stations to a city's reference point.  The black dots are the reference points, and the red dots are the stations, ordered from 1 to *k* by closeness. I have included *k* in the function, however it is an optional parameter that will default to 5 if omitted. 
@@ -39,6 +54,8 @@ The following function plots the k-nearest weather stations to a city's referenc
 plotStations(cities, station.list, 5)
 ```
 ![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/images/cityPlot.png)
+
+
 
 Now let's download the station data.  
 
