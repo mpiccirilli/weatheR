@@ -24,6 +24,16 @@
 #' @param hourly_interval Minimum hourly interval allowable (1=hourly; 3 = every 3 hours; 6 = every 6 hours, etc..)
 #' @param tolerance This is the percent, in decimals, of missing data you will allow. (.05 = 5% of total data)
 #' @return Returns a single dataframe with hourly observations (including interpolated) of every city.
+#' @examples
+#' \dontrun{
+#' 
+#' data(stations) #called in as 'station.list'
+#' cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
+#' 
+#' hourly.data <- getInterpolatedDataByCity(cities, station.list, 5, 2010, 2013, 100, 3, .05)
+#' dim(hourly.data)
+#' 
+#' }
 #' @export
 
 

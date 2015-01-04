@@ -7,6 +7,13 @@
 #' @param station.list Full list of ISD stations included in the package
 #' @param k The number of stations to return
 #' @return This will produce single, or multple plots for each city
+#' @examples
+#' \dontrun{
+#' 
+#' data(stations) #called in as 'station.list'
+#' cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
+#' plotStations(cities, station.list, 5)
+#' }
 #' @export
 
 

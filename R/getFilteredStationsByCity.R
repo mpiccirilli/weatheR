@@ -22,6 +22,24 @@
 #'     2) A dataframe with the number of stations removed and kept during the filtering process
 #'     3) A list of names of the final stations returned
 #'     2) A list of dataframes.  Each dataframe is all years data of a particular station.
+#'     
+#' @examples
+#' \dontrun{
+#' 
+#' data(stations) #called in as 'station.list'
+#' cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
+#' get.stations <- getFilteredStationsByCity(cities, station.list, begin = 2012, end = 2013)
+#' 
+#' get.stations$dl_status
+#' 
+#' get.stations$removed_rows
+#' 
+#' get.stations$station_names_final
+#' 
+#' class(get.stations$station_data)
+#' 
+#' length(get.stations$station_data)
+#' }
 #' @export
 
 

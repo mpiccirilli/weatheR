@@ -6,7 +6,8 @@
 #' @return This function will download the full list of NOAA ISD stations to a variable.
 #' @examples
 #' \dontrun{
-#' list.of.stations <- allStations()
+#' 
+#' station.list <- allStations()
 #' }
 #' @export
 

@@ -4,7 +4,7 @@
 \alias{kNStations}
 \title{Get the k-nearest weather stations to a city}
 \usage{
-kNStations(city.list, station.list, k = NULL)
+kNStations(city.list, station.list, k = 5)
 }
 \arguments{
 \item{city.list}{City of list of Cities. The format should be as follows: "City, State", or "City, Country"}

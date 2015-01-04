@@ -4,7 +4,7 @@
 \alias{plotStations}
 \title{Plot k-nearest stations}
 \usage{
-plotStations(city.list, station.list, k = NULL)
+plotStations(city.list, station.list, k = 5)
 }
 \arguments{
 \item{city.list}{City of list of Cities. The format should be as follows: "City, State", or "City, Country"}

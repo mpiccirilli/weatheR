@@ -7,6 +7,13 @@
 #' @param station.list Full list of ISD stations included in the package
 #' @param k The number of stations to return
 #' @return Returns the k-nearest weather stations in the full ISD station.list
+#' @examples
+#' \dontrun{
+#' 
+#' data(stations) #called in as 'station.list'
+#' cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
+#' k.n.stations <- kNStations(cities, station.list, 5)
+#' }
 #' @export
 
 kNStations <- function(city.list, station.list, k = 5)
