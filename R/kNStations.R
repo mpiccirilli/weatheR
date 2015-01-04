@@ -9,10 +9,8 @@
 #' @return Returns the k-nearest weather stations in the full ISD station.list
 #' @export
 
-kNStations <- function(city.list, station.list, k = NULL)
+kNStations <- function(city.list, station.list, k = 5)
 {
-  if(is.null(k)) k <- 5
-
   coords <- suppressMessages(geocode(city.list))
   # Find k-nearest weather stations to the reference point
   kns <- get.knnx(as.matrix(station.list[,c(8,7)]),as.matrix(coords), k)

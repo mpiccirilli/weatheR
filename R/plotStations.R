@@ -10,7 +10,7 @@
 #' @export
 
 
-plotStations <- function(city.list, station.list, k = NULL)
+plotStations <- function(city.list, station.list, k = 5)
 {
   if(is.null(k)) k <- 5
 
