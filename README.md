@@ -176,6 +176,8 @@ plotDailyMax
 ------
 Now that we have hourly observations for these 4 cities, perhaps we would like to plot the maximum daily temperature for each. 
 
+**Note:** Currently this funciton only takes the output from `getInterpolatedDataByCity`. I will update it soon to take output from `getFilteredStationsByCity` and 'getStationsByCity` as well. 
+
 ```{r}
 plotDailyMax(hourly.data)
 ```
