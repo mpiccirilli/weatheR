@@ -59,9 +59,9 @@ Now let's download the station data.
 
 getStationsByCity
 -----
-This function will downlaod each year of data for the k-nearest stations (default = 5) for each city, so it will take some time to run.  The output of the function is a list of two:
-1) dl_status:  This is the status of attempting to download each year of each station.
-2) station_data: This is a list of dataframes with the station data
+This function will downlaod each year of data for the k-nearest stations (default = 5) for each city, so it will take some time to run.  The output of the function is a list of two:<p>
+1) dl_status:  This is the status of attempting to download each year of each station.<br>
+2) station_data: This is a list of dataframes with the station data<br>
 
 ```{r}
 stations <- getStationsByCity(cities, station.list, begin = 2012, end = 2013)
@@ -119,12 +119,12 @@ length(stations$station_data)
 getFilteredStationsByCity
 -------
 This function is similar to `getStationsByCity` except this goes one more step and applies some filters to each of the stations so that we can select the 'best' station for each city.  So this will return only 1 station per city, instead of the k-nearest available stations. 
-
-The output of the function is a list of four:
-1) dl_status:  This is the status of attempting to download each year of each station.
-2) removed_rows: This shows the number of stations found, removed, and kept through the filtering process. The name comes from the filtering techniques used, which are based on the number of missing observations
-3) station_names_final: the names of each dataframe in `station_data`. The format is: "city_USAFID"
-4) station_data: This is a list of dataframes with the station data
+<p>
+The output of the function is a list of four:<p>
+1) dl_status:  This is the status of attempting to download each year of each station.<br>
+2) removed_rows: This shows the number of stations found, removed, and kept through the filtering process. The name comes from the filtering techniques used, which are based on the number of missing observations<br>
+3) station_names_final: the names of each dataframe in `station_data`. The format is: "city_USAFID"<br>
+4) station_data: This is a list of dataframes with the station data<br>
 
 ```{r}
 stations <- getFilteredStationsByCity(cities, station.list, begin = 2012, end = 2013)
