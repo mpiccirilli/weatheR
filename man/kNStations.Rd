@@ -7,7 +7,7 @@
 kNStations(city.list, station.list, k = 5)
 }
 \arguments{
-\item{city.list}{City of list of Cities. The format should be as follows: "City, State", or "City, Country"}
+\item{city.list}{List of cities. Format should be: "City, State", or "City, Country"}
 
 \item{station.list}{Full list of ISD stations included in the package}
 
@@ -22,8 +22,7 @@ and return the k-nearest weather stations to that reference point.
 }
 \examples{
 \dontrun{
-
-data(stations) #called in as 'station.list'
+data(stations)
 cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
 k.n.stations <- kNStations(cities, station.list, 5)
 }

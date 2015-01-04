@@ -29,13 +29,10 @@ and downloads all the data for those stations in between a given date range (in 
 }
 \examples{
 \dontrun{
-
-data(stations) #called in as 'station.list'
+data(stations)
 cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
 get.stations <- getStationsByCity(cities, station.list, begin = 2012, end = 2013)
-
 get.stations$dl_status
-
 class(get.stations$station_data)
 length(get.stations$station_data)
 }

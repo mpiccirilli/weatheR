@@ -15,26 +15,20 @@
 #' @param hourly_interval Minimum hourly interval allowable (1=hourly; 3 = every 3 hours; 6 = every 6 hours, etc..)
 #' @param tolerance This is the percent, in decimals, of missing data you will allow. (.05 = 5% of total data)
 #' @return Returns a list of four items.
-#'     1) A dataframe with the status of downloading each year's data for each station
-#'     2) A dataframe with the number of stations removed and kept during the filtering process
-#'     3) A list of names of the final stations returned
-#'     2) A list of dataframes.  Each dataframe is all years data of a particular station.
-#'
+#'     1) Download status.
+#'     2) Number of downlaoded, removed, and kept stations
+#'     3) Names of final stations
+#'     2) A list of dataframes for each station.
 #' @examples
 #' \dontrun{
-#'
-#' data(stations) #called in as 'station.list'
+#' data(stations)
 #' cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
 #' get.stations <- getFilteredStationsByCity(cities, station.list, begin = 2012, end = 2013)
-#'
 #' get.stations$dl_status
-#'
 #' get.stations$removed_rows
-#'
 #' get.stations$station_names_final
 #'
 #' class(get.stations$station_data)
-#'
 #' length(get.stations$station_data)
 #' }
 #' @export

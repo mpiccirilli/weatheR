@@ -9,8 +9,7 @@
 #' @return This will produce single, or multple plots for each city
 #' @examples
 #' \dontrun{
-#' 
-#' data(stations) #called in as 'station.list'
+#' data(stations)
 #' cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
 #' plotStations(cities, station.list, 5)
 #' }

@@ -8,15 +8,10 @@
 #' @return Plots the daily max temperateu of one or multiple cities
 #' @examples
 #' \dontrun{
-#' 
-#' 
-#' #' data(stations) #called in as 'station.list'
+#' data(stations)
 #' cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
 #' hourly.data <- getInterpolatedDataByCity(cities, station.list, 5, 2010, 2013, 100, 3, .05)
-#' 
-#' # As of right now, this can only plot data from the getInterpolatedDataByCity function
 #' plotDailyMax(hourly.data)
-#' 
 #' }
 #' @export
 

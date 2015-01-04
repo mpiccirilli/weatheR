@@ -3,14 +3,13 @@
 #' Using either an individual city or a list of cities, this will find a reference point for each location
 #' and return the k-nearest weather stations to that reference point.
 #'
-#' @param city.list City of list of Cities. The format should be as follows: "City, State", or "City, Country"
+#' @param city.list List of cities. Format should be: "City, State", or "City, Country"
 #' @param station.list Full list of ISD stations included in the package
 #' @param k The number of stations to return
 #' @return Returns the k-nearest weather stations in the full ISD station.list
 #' @examples
 #' \dontrun{
-#' 
-#' data(stations) #called in as 'station.list'
+#' data(stations)
 #' cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
 #' k.n.stations <- kNStations(cities, station.list, 5)
 #' }
