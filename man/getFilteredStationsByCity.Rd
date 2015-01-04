@@ -32,11 +32,7 @@ Returns a list of four items.
     2) A list of dataframes.  Each dataframe is all years data of a particular station.
 }
 \description{
-This function utilizes the kNStation() function to find the k-nearest stations,
-and downloads all the data for those stations in between a given date range (in years). It then applies
-four filters:
-}
-\details{
+This function returns 1 station for each city, after applying four filters:
 1) Remove stations with little to no data
 2) Remove stations that exceed a maximum distance from each city's reference point
 3) Remove stations that exceed a threshold of missing data, including NA values

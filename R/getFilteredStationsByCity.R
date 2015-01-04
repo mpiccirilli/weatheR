@@ -1,9 +1,6 @@
 #' Get k-nearest station data, Filtered
 #'
-#' This function utilizes the kNStation() function to find the k-nearest stations,
-#' and downloads all the data for those stations in between a given date range (in years). It then applies
-#' four filters:
-#'
+#' This function returns 1 station for each city, after applying four filters:
 #' 1) Remove stations with little to no data
 #' 2) Remove stations that exceed a maximum distance from each city's reference point
 #' 3) Remove stations that exceed a threshold of missing data, including NA values
@@ -22,22 +19,22 @@
 #'     2) A dataframe with the number of stations removed and kept during the filtering process
 #'     3) A list of names of the final stations returned
 #'     2) A list of dataframes.  Each dataframe is all years data of a particular station.
-#'     
+#'
 #' @examples
 #' \dontrun{
-#' 
+#'
 #' data(stations) #called in as 'station.list'
 #' cities <- c("Nairobi, Kenya", "Tema, Ghana", "Accra, Ghana", "Abidjan, Ivory Coast")
 #' get.stations <- getFilteredStationsByCity(cities, station.list, begin = 2012, end = 2013)
-#' 
+#'
 #' get.stations$dl_status
-#' 
+#'
 #' get.stations$removed_rows
-#' 
+#'
 #' get.stations$station_names_final
-#' 
+#'
 #' class(get.stations$station_data)
-#' 
+#'
 #' length(get.stations$station_data)
 #' }
 #' @export
