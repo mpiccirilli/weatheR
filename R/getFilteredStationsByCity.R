@@ -34,7 +34,7 @@
 #' @export
 
 
-getFilteredStationsByCity <- function(city.list, station.list, k=NULL, begin, end, distance=100, hourly_interval=3, tolerance=.05)
+getFilteredStationsByCity <- function(city.list, station.list, k=5, begin, end, distance=100, hourly_interval=3, tolerance=.05)
 {
   kns <- kNStations(city.list, station.list, k)
   weatherDFs <- dlStationData(kns, begin, end)
