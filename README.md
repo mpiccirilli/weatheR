@@ -137,8 +137,10 @@ The output of the function is a list of four:<p>
 3) station_names_final: the names of each dataframe in `station_data`. The format is: "city_USAFID"<br>
 4) station_data: This is a list of dataframes with the station data<br>
 
+**Note** In version 0.1 on CRAN, *k=NULL*, and needs to be specified.  The version on GitHub, and future versions submitted to CRAN will not require *k*; it's default value will be *k=5*.
+
 ```{r}
-stations <- getFilteredStationsByCity(cities, station.list, begin = 2012, end = 2013)
+stations <- getFilteredStationsByCity(cities, station.list, k=5, begin = 2012, end = 2013)
 
 stations$dl_status  #same results as above
 
