@@ -3,17 +3,9 @@ Title: Download, Transform, and plot NOAA ISD weather data
 Version: 0.1
 Author: Michael Piccirilli <mrp2181@columbia.edu>
 Maintainer: Michael Piccirilli <mrp2181@columbia.edu>
-Description: A preliminary package to set up to be used to accompany research being conducted
-    in the Sustainable Engineering lab at The Earth Institute at Columbia University.
+Description: A package set up to be used to accompany research being conducted
+    in the Sustainable Engineering Lab at The Earth Institute at Columbia University.
 Depends: R (>= 3.1.2),
-    httr,
-    ggmap,
-    FNN,
-    McSpatial,
-    data.table,
-    plyr,
-    gridExtra
-Imports:
     httr,
     ggmap,
     FNN,
