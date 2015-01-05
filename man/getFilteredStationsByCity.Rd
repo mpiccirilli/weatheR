@@ -4,7 +4,7 @@
 \alias{getFilteredStationsByCity}
 \title{Get k-nearest station data, Filtered}
 \usage{
-getFilteredStationsByCity(city.list, station.list, k = NULL, begin, end,
+getFilteredStationsByCity(city.list, station.list, k = 5, begin, end,
   distance = 100, hourly_interval = 3, tolerance = 0.05)
 }
 \arguments{
