@@ -1,5 +1,21 @@
 ######## Utils #######
 
+
+########## Greate Circle Distance Calcualtor ##########
+deg2rad <- function(deg) return(deg*pi/180)
+
+gcd.slc <- function(long1, lat1, long2, lat2) {
+  long1 <- deg2rad(long1)
+  lat1 <- deg2rad(lat1)
+  long2 <- deg2rad(long2)
+  lat2 <- deg2rad(lat2)
+  R <- 6371 # Earth mean radius [km]
+  d <- acos(sin(lat1)*sin(lat2) + cos(lat1)*cos(lat2) * cos(long2-long1)) * R
+  return(d) # Distance in km
+}
+########## Greate Circle Distance Calcualtor ##########
+
+
 ########## Multiplot ##########
 # Got this from R Cookbook
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL)
@@ -48,6 +64,7 @@ col.names <- c("CHARS", "USAFID", "WBAN", "YR", "M", "D", "HR", "MIN",
                "TEMP", "TEMP.QLTY", "DEW.POINT", "DEW.POINT.QLTY",
                "ATM.PRES", "ATM.PRES.QLTY")
 ########## Fixed Column Widths & Names ##########
+
 
 
 
@@ -127,13 +144,14 @@ dlStationData <- function(kns, beg, end)
 combineWeatherDFs <- function(dfList)
 {
   combined.list <- list()
+  trackNull <- which(names(dfList$station_data)=="")
+  dfList$station_data <- dfList$station_data[-trackNull]
   keys <- unique(names(dfList$station_data))
-  keys <- keys[keys!=""]
   nkeys <- length(keys)
   for (i in 1:nkeys)
   {
     track <- which(names(dfList$station_data)==keys[i])
-    combined.list[[i]] <- as.data.frame(rbindlist(dfList$station_data[track]))
+    combined.list[[i]] <- suppressWarnings(Reduce(function(...) rbind(...), dfList$station_data[track]))
     names(combined.list)[i] <- keys[i]
   }
   output.list <- list(dfList$dl_status, combined.list)
@@ -141,6 +159,7 @@ combineWeatherDFs <- function(dfList)
   return(output.list)
 }
 ########## Combine List of DataFrames ##########
+
 
 
 ########## Filter Station Data ##########
@@ -163,7 +182,7 @@ filterStationData <- function(comb.list, distance, hourly_interval, tolerance, b
   # keep track of which stations have been removed
   rm.tmp <- unique(c(rm.junk, rm.dist))
 
-  lapply(comb.list, names)
+
   # 3.a) remove stations that exceed threshold of missing data,
   # start with counting the 999s:
   cl <- c("TEMP", "DEW.POINT") # Additional columns can be added
@@ -210,11 +229,12 @@ filterStationData <- function(comb.list, distance, hourly_interval, tolerance, b
 
   # Show what was removed during the filtering process:
   kept <- names(comb.list)
-  st.df <- data.frame(count(city.names))
-  rm.df <- count(substr(rm.all, 1, nchar(rm.all)-7))
-  kept.df <- count(substr(kept, 1, nchar(kept)-7))
+  st.df <- data.frame(table(city.names))
+  names(st.df)[1] <- "Var1"
+  rm.df <- data.frame(table(substr(rm.all, 1, nchar(rm.all)-7)))
+  kept.df <- data.frame(table(substr(kept, 1, nchar(kept)-7)))
   df.list <- list(st.df, rm.df, kept.df)
-  mg.df <- Reduce(function(...) merge(..., by="x", all=T), df.list)
+  mg.df <- Reduce(function(...) merge(..., by="Var1", all=T), df.list)
   suppressWarnings(mg.df[is.na(mg.df)] <- 0)
   colnames(mg.df) <- c("city", "stations", "removed", "kept")
   filterStatus <- mg.df
