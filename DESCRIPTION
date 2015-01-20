@@ -7,5 +7,7 @@ Description: A package to Download, Transform, and plot NOAA ISD weather data
 Depends: R (>= 3.1.2),
     httr,
     ggmap,
-    grid
+    ggplot2,
+    grid,
+    plyr
 License: GPL-2

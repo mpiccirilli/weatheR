@@ -12,5 +12,5 @@
 #' @aliases weatheR
 #' @docType package
 #' @author Michael Piccirilli \email{mrp2181@@columbia.edu}
-#' @import httr ggmap grid
+#' @import httr ggmap ggplot2 grid plyr
 NULL
