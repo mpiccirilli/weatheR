@@ -17,5 +17,6 @@ Michael Piccirilli \email{mrp2181@columbia.edu}
 \code{\link{getInterpolatedDataByCity}}, \code{\link{getStationByID}},
 \code{\link{getStationsByCity}}, \code{\link{kNStations}},
 \code{\link{plotDailyMax}}, \code{\link{plotStations}}
+\code{\link{interpolateData}}
 }
 

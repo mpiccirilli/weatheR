@@ -1,7 +1,9 @@
 Package: weatheR
 Title: Download, Transform, and plot NOAA ISD weather data
 Version: 0.1
-Author: Michael Piccirilli <mrp2181@columbia.edu>, Elliot Cohen <ec2977@columbia.edu>
+Author: Michael Piccirilli <mrp2181@columbia.edu>,
+    Elliot Cohen <ec2977@columbia.edu>,
+    James McCreight <mccreigh@gmail.com>
 Maintainer: Michael Piccirilli <mrp2181@columbia.edu>
 Description: A package to Download, Transform, and plot NOAA ISD weather data
 Depends: R (>= 3.1.2),
@@ -9,5 +11,4 @@ Depends: R (>= 3.1.2),
     ggmap,
     ggplot2,
     grid,
-    plyr
 License: GPL-2

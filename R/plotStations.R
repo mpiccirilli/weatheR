@@ -3,7 +3,7 @@
 #' This function will plot each city's reference point, along with the
 #' k-nearest stations to that point.
 #'
-#' @param city.list City of list of Cities. The format should be as follows: "City, State", or "City, Country"
+#' @param city.list List of Cities. The format should be as follows: "City, State", or "City, Country"
 #' @param station.list Full list of ISD stations included in the package
 #' @param k The number of stations to return
 #' @return This will produce single, or multple plots for each city

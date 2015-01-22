@@ -7,10 +7,10 @@
 #' \code{\link{getInterpolatedDataByCity}}, \code{\link{getStationByID}},
 #' \code{\link{getStationsByCity}}, \code{\link{kNStations}},
 #' \code{\link{plotDailyMax}}, \code{\link{plotStations}}
-#'
+#' \code{\link{interpolateData}}
 #' @name weatheR-package
 #' @aliases weatheR
 #' @docType package
 #' @author Michael Piccirilli \email{mrp2181@@columbia.edu}
-#' @import httr ggmap ggplot2 grid plyr
+#' @import httr ggmap ggplot2 grid
 NULL

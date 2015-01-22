@@ -7,7 +7,7 @@
 plotStations(city.list, station.list, k = 5)
 }
 \arguments{
-\item{city.list}{City of list of Cities. The format should be as follows: "City, State", or "City, Country"}
+\item{city.list}{List of Cities. The format should be as follows: "City, State", or "City, Country"}
 
 \item{station.list}{Full list of ISD stations included in the package}
 
