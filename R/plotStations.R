@@ -16,16 +16,14 @@
 #' @export
 
 
-plotStations <- function(city.list, station.list, k = 5)
+plotStations <- function(city.list, station.list, k = 5, zoom=10)
 {
-  if(is.null(k)) k <- 5
-
   kns <- kNStations(city.list, station.list, k)
   nc <- length(city.list)
   plots <- list()
   for (i in 1:nc)
   {
-    map <- suppressMessages(get_map(location = city.list[i], zoom = 10))
+    map <- suppressMessages(get_map(location = city.list[i], zoom = zoom))
     p1 <- suppressMessages(ggmap(map) +
                              geom_point(aes(x = LON, y = LAT),
                                         data = kns[kns$city==city.list[i],],
