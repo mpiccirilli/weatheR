@@ -65,7 +65,7 @@ In addition to the list of stations and cities, we have also included several ot
 - minimum hourly interval of observations. ex, 1 = hourly, 3 = every three hours, etc.. (optional; default=3)
 - tolerance, which ismax percent of missing data we will allow (optional; default=.05)
 <p>
-As you will see in the examples below, I do include the optional parameters except in `getInterpolatedDataByCity`.
+As you will see in the examples below, I do not include the optional parameters except in `getInterpolatedDataByCity`.
 
 
 getStationsByCity
@@ -79,52 +79,52 @@ stations <- getStationsByCity(cities, station.list, begin = 2012, end = 2013)
 
 stations$dl_status
 
-                   File  Status                 City rank kilo_distance
-1  655780-99999-2012.gz Success Abidjan, Ivory Coast    1     13.396883
-21 655780-99999-2013.gz Success Abidjan, Ivory Coast    1     13.396883
-2  655850-99999-2012.gz Success Abidjan, Ivory Coast    2     81.198627
-22 655850-99999-2013.gz Success Abidjan, Ivory Coast    2     81.198627
-3  655620-99999-2012.gz Success Abidjan, Ivory Coast    3    165.546591
-23 655620-99999-2013.gz Success Abidjan, Ivory Coast    3    165.546591
-4  654650-99999-2012.gz Success Abidjan, Ivory Coast    4    205.531045
-24 654650-99999-2013.gz Success Abidjan, Ivory Coast    4    205.531045
-5  654450-99999-2012.gz Success Abidjan, Ivory Coast    5    212.170762
-25 654450-99999-2013.gz Success Abidjan, Ivory Coast    5    212.170762
-6  654720-99999-2012.gz Success         Accra, Ghana    1      7.121795
-26 654720-99999-2013.gz Success         Accra, Ghana    1      7.121795
-7  654730-99999-2012.gz Success         Accra, Ghana    2     23.349153
-27 654730-99999-2013.gz Success         Accra, Ghana    2     23.349153
-8  654490-99999-2012.gz  Failed         Accra, Ghana    3     40.986341
-28 654490-99999-2013.gz  Failed         Accra, Ghana    3     40.986341
-9  654590-99999-2012.gz Success         Accra, Ghana    4     59.512919
-29 654590-99999-2013.gz Success         Accra, Ghana    4     59.512919
-10 654710-99999-2012.gz  Failed         Accra, Ghana    5     68.850839
-30 654710-99999-2013.gz  Failed         Accra, Ghana    5     68.850839
-11 637420-99999-2012.gz Success       Nairobi, Kenya    1      3.416254
-31 637420-99999-2013.gz Success       Nairobi, Kenya    1      3.416254
-12 637390-99999-2012.gz Success       Nairobi, Kenya    2      4.756458
-32 637390-99999-2013.gz Success       Nairobi, Kenya    2      4.756458
-13 637410-99999-2012.gz Success       Nairobi, Kenya    3      8.044960
-33 637410-99999-2013.gz Success       Nairobi, Kenya    3      8.044960
-14 637403-99999-2012.gz  Failed       Nairobi, Kenya    4      8.044960
-34 637403-99999-2013.gz  Failed       Nairobi, Kenya    4      8.044960
-15 692014-99999-2012.gz Success       Nairobi, Kenya    5     10.601511
-35 692014-99999-2013.gz Success       Nairobi, Kenya    5     10.601511
-16 654730-99999-2012.gz Success          Tema, Ghana    1      5.521650
-36 654730-99999-2013.gz Success          Tema, Ghana    1      5.521650
-17 654720-99999-2012.gz Success          Tema, Ghana    2     19.707146
-37 654720-99999-2013.gz Success          Tema, Ghana    2     19.707146
-18 654490-99999-2012.gz  Failed          Tema, Ghana    3     19.907417
-38 654490-99999-2013.gz  Failed          Tema, Ghana    3     19.907417
-19 654710-99999-2012.gz  Failed          Tema, Ghana    4     48.059678
-39 654710-99999-2013.gz  Failed          Tema, Ghana    4     48.059678
-20 654600-99999-2012.gz Success          Tema, Ghana    5     49.882386
-40 654600-99999-2013.gz Success          Tema, Ghana    5     49.882386
+##                   File  Status                 City rank kilo_distance
+##   655780-99999-2012.gz Success Abidjan, Ivory Coast    1     13.396883
+##   655780-99999-2013.gz Success Abidjan, Ivory Coast    1     13.396883
+##   655850-99999-2012.gz Success Abidjan, Ivory Coast    2     81.198627
+##   655850-99999-2013.gz Success Abidjan, Ivory Coast    2     81.198627
+##   655620-99999-2012.gz Success Abidjan, Ivory Coast    3    165.546591
+##   655620-99999-2013.gz Success Abidjan, Ivory Coast    3    165.546591
+##   654650-99999-2012.gz Success Abidjan, Ivory Coast    4    205.531045
+##   654650-99999-2013.gz Success Abidjan, Ivory Coast    4    205.531045
+##   654450-99999-2012.gz Success Abidjan, Ivory Coast    5    212.170762
+##   654450-99999-2013.gz Success Abidjan, Ivory Coast    5    212.170762
+##   654720-99999-2012.gz Success         Accra, Ghana    1      7.121795
+##   654720-99999-2013.gz Success         Accra, Ghana    1      7.121795
+##   654730-99999-2012.gz Success         Accra, Ghana    2     23.349153
+##   654730-99999-2013.gz Success         Accra, Ghana    2     23.349153
+##   654490-99999-2012.gz  Failed         Accra, Ghana    3     40.986341
+##   654490-99999-2013.gz  Failed         Accra, Ghana    3     40.986341
+##   654590-99999-2012.gz Success         Accra, Ghana    4     59.512919
+##   654590-99999-2013.gz Success         Accra, Ghana    4     59.512919
+##   654710-99999-2012.gz  Failed         Accra, Ghana    5     68.850839
+##   654710-99999-2013.gz  Failed         Accra, Ghana    5     68.850839
+##   637420-99999-2012.gz Success       Nairobi, Kenya    1      3.416254
+##   637420-99999-2013.gz Success       Nairobi, Kenya    1      3.416254
+##   637390-99999-2012.gz Success       Nairobi, Kenya    2      4.756458
+##   637390-99999-2013.gz Success       Nairobi, Kenya    2      4.756458
+##   637410-99999-2012.gz Success       Nairobi, Kenya    3      8.044960
+##   637410-99999-2013.gz Success       Nairobi, Kenya    3      8.044960
+##   637403-99999-2012.gz  Failed       Nairobi, Kenya    4      8.044960
+##   637403-99999-2013.gz  Failed       Nairobi, Kenya    4      8.044960
+##   692014-99999-2012.gz Success       Nairobi, Kenya    5     10.601511
+##   692014-99999-2013.gz Success       Nairobi, Kenya    5     10.601511
+##   654730-99999-2012.gz Success          Tema, Ghana    1      5.521650
+##   654730-99999-2013.gz Success          Tema, Ghana    1      5.521650
+##   654720-99999-2012.gz Success          Tema, Ghana    2     19.707146
+##   654720-99999-2013.gz Success          Tema, Ghana    2     19.707146
+##   654490-99999-2012.gz  Failed          Tema, Ghana    3     19.907417
+##   654490-99999-2013.gz  Failed          Tema, Ghana    3     19.907417
+##   654710-99999-2012.gz  Failed          Tema, Ghana    4     48.059678
+##   654710-99999-2013.gz  Failed          Tema, Ghana    4     48.059678
+##   654600-99999-2012.gz Success          Tema, Ghana    5     49.882386
+##   654600-99999-2013.gz Success          Tema, Ghana    5     49.882386
 
 class(stations$station_data)
-[1] "list"
+##  [1] "list"
 length(stations$station_data)
-[1] 15
+##  [1] 15
 ```
 
 getFilteredStationsByCity
@@ -144,43 +144,78 @@ stations <- getFilteredStationsByCity(cities, station.list, begin = 2012, end = 
 stations$dl_status  #same results as above
 
 stations$removed_rows
-     city stations removed kept
-1 Abidjan        5       3    2
-2   Accra        3       2    1
-3 Nairobi        4       1    3
-4    Tema        3       2    1
+
+##      city stations removed kept
+##   Abidjan        5       3    2
+##     Accra        3       2    1
+##   Nairobi        4       1    3
+##      Tema        3       2    1
 
 stations$station_names_final
-[1] "Abidjan_655780" "Accra_654720"   "Nairobi_637420" "Tema_654720" 
+##  [1] "Abidjan_655780" "Accra_654720"   "Nairobi_637420" "Tema_654720" 
 
 
 class(stations$station_data)
-[1] "list"
+##  [1] "list"
 length(stations$station_data)
-[1] 4
+##  [1] 4
 ```
 
 getInterpolatedDataByCity
 ------
 This function uses the same filtering procedure as `getFilteredStationsByCity` stations, selecting the best station for each city based on the number of missing observations and proximity to each city's reference point. It will then average the hourly observations and interpolate any missing values.
 
-The output is one large dataframe with hourly observations for each city.
+The output of the function is a list of five:<p>
+1) dl_status:  This is the status of attempting to download each year of each station.<br>
+2) removed_rows: This shows the number of stations found, removed, and kept through the filtering process. The name comes from the filtering techniques used, which are based on the number of missing observations<br>
+3) station_names_final: the names of each dataframe in `station_data`. The format is: "city_USAFID"<br>
+4) interpolated:  This shows the number and percent of values that have been interpolated for each station <br>
+5) station_data: This is one large dataframe with all station data combined<br>
 
+To do:  
+1/24: Include optionality to return station_data as either a list or a dataframe
 ```{r, eval=FALSE}
 hourly.data <- getInterpolatedDataByCity(cities, station.list, 5, 2010, 2013, 100, 3, .05)
 
-dim(hourly.data)
-[1] 140256     14
+hourly.data$dl_status    # same results as above
+
+hourly.data$removed_rows    # same results as above
+
+hourly.data$station_names_final    # same results as above
+
+hourly.data$interpolated
+##                 num_interpolated pct_interpolated
+##  Abidjan_655780              504       0.01437372
+##  Accra_654720               7822       0.22307780
+##  Nairobi_637420            17876       0.50981063
+##  Tema_654720                8384       0.23910564
+
+
+unique(hourly.data$station_data$city)
+##  [1] "Abidjan" "Accra"   "Nairobi" "Tema"   
+
+head(hourly.data$station_data)
+##                 hours    city USAFID distance rank   YR M D HR  LAT   LONG ELEV  TEMP DEW.POINT
+##   2010-01-01 00:00:00 Abidjan 655780 13.39947    1 2010 1 1  0 5.25 -3.933    8 27.50      26.5
+##   2010-01-01 01:00:00 Abidjan 655780 13.39947    1 2010 1 1  1 5.25 -3.933    8 28.00      27.0
+##   2010-01-01 02:00:00 Abidjan 655780 13.39947    1 2010 1 1  2 5.25 -3.933    8 28.00      28.0
+##   2010-01-01 03:00:00 Abidjan 655780 13.39947    1 2010 1 1  3 5.25 -3.933    8 27.65      26.3
+##   2010-01-01 04:00:00 Abidjan 655780 13.39947    1 2010 1 1  4 5.25 -3.933    8 28.00      26.0
+##   2010-01-01 05:00:00 Abidjan 655780 13.39947    1 2010 1 1  5 5.25 -3.933    8 27.00      26.0
 ```
+
 
 plotDailyMax
 ------
 Now that we have hourly observations for these 4 cities, perhaps we would like to plot the maximum daily temperature for each. 
 
-**Note:** Currently this funciton only takes the output from `getInterpolatedDataByCity`. I will update it soon to take output from `getFilteredStationsByCity` and `getStationsByCity` as well. 
+Input options:
+- One large dataframe with multiple locations such as the output from `getInterpolatedDataByCity` 
+- A list of dataframes such as the output from `getFilteredStationsByCity` 
+- A single dataframe such as the output from  `getStationsByCity`
 
 ```{r}
-plotDailyMax(hourly.data)
+plotDailyMax(hourly.data$station_data)
 ```
 
 ![cityPlot](https://github.com/mpiccirilli/weatheR/blob/master/images/dailyMax.png)
