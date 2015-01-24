@@ -15,12 +15,16 @@
 #' }
 #' @export
 
+
 plotDailyMax <- function(hourlyDF)
 {
+  if(class(hourlyDF)=="list")
+  {
+    hourlyDF <- suppressWarnings(Reduce(function(...) rbind(...), hourlyDF))
+  }
   d.max <- aggregate(TEMP ~ city + YR + M + D, hourlyDF, max)
   d.max <- d.max[with(d.max, order(city, YR, M, D)),]
-  d.max$day <- as.POSIXct(paste(d.max$YR, d.max$M, d.max$D,sep="-"),format="%Y-%m-%d")
-  p1 <- ggplot(d.max, aes(x=day, y=TEMP)) + geom_point() + facet_grid(city ~.)
+  d.max$date <- as.POSIXct(paste(d.max$YR, d.max$M, d.max$D,sep="-"),format="%Y-%m-%d")
+  p1 <- ggplot(d.max, aes(x=date, y=TEMP)) + geom_point() + facet_grid(city ~.)
   plot(p1)
 }
-

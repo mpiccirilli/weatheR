@@ -4,6 +4,7 @@
 #' a data frame with hourly observations, with missing observations linearly interpolated
 #'
 #' @param station_data List object of weather data
+#' @param type Type of data structure to return the weather data. "df" or "list"
 #' @return This will return a list object with two elements: 1) The percentage number and percentage of interpolated values for each weather station; 2) A list of dataframes for each station.
 #' @examples
 #' \dontrun{
@@ -12,10 +13,11 @@
 #' @export
 
 
-
-interpolateData <- function(wx.list)
+interpolateData <- function(wx.list, type="df")
 {
-  clean.list <- lapply(wx.list, function(x) {
+  st.data <- wx.list$station_data
+
+  clean.list <- lapply(st.data, function(x) {
     aggregate(cbind(LAT, LONG, ELEV, TEMP, DEW.POINT) ~
                 city + USAFID + distance + rank + YR + M + D + HR, data=x, mean)
   })
@@ -37,6 +39,17 @@ interpolateData <- function(wx.list)
       to=as.POSIXct(paste(max(clean.list[[i]]$YR),"-12-31 23:00", sep=""), tz="UTC"),
       by="hour"))
   }
+
+  missing <- matrix(nrow=length(clean.list), ncol=2,
+                    dimnames=list(names(clean.list),c("num_interpolated", "pct_interpolated")))
+  for(i in 1:length(clean.list))
+  {
+    ms.num <- (nrow(hourly.list[[i]]) - nrow(clean.list[[i]]))
+    ms.pct <- (nrow(hourly.list[[i]]) - nrow(clean.list[[i]]))/nrow(hourly.list[[i]])
+    missing[i,] <- c(ms.num, ms.pct)
+  }
+  missing <- as.data.frame(missing)
+  print(missing)
 
   out.list <- list()
   for (i in 1:length(clean.list))
@@ -68,5 +81,22 @@ interpolateData <- function(wx.list)
     # Merge the dataframes together
     out.list <- c(out.list, temp.list)
   }
-  return(out.list)
+
+  # This will return one large dataframe in the 'station_list' list item in the output
+  if(type=="df")
+  {
+    oneDF <- suppressWarnings(Reduce(function(...) rbind(...), out.list))
+    final <- list(dl_status=wx.list$dl_status, removed_rows=wx.list$removed_rows,
+                  station_names_final=wx.list$station_names_final, interpolated=missing,
+                  station_data=oneDF)
+  }
+  # this will return a list of dataframes in the 'station_list' list item in the output
+  if(type=="list")
+  {
+    final <- list(dl_status=wx.list$dl_status, removed_rows=wx.list$removed_rows,
+                  station_names_final=wx.list$station_names_final, interpolated=missing,
+                  station_data=out.list)
+  }
+
+  return(final)
 }
