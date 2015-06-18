@@ -12,7 +12,7 @@
 #' @aliases weatheR
 #' @docType package
 #' @author Michael Piccirilli \email{michael.r.piccirilli@@gmail.com},
-#' Elliot Cohen \email{ec2977@columbia.edu},
-#' James McCreight \email{mccreigh@gmail.com}
+#' Elliot Cohen \email{ec2977@@columbia.edu},
+#' James McCreight \email{mccreigh@@gmail.com}
 #' @import httr ggmap ggplot2 grid
 NULL
